@@ -30,7 +30,12 @@ namespace Shopi
         {
             using (var reader = new StreamReader(file))
             {
-                var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "|", HeaderValidated = null, MissingFieldFound = null };
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture) 
+                {
+                    Delimiter = "|", 
+                    HeaderValidated = null, // For the ignore missing headers
+                    MissingFieldFound = null // For the ignore missing values
+                };
 
                 using (var csv = new CsvReader(reader, config))
                 {
